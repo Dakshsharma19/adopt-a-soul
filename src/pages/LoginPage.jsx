@@ -1,8 +1,18 @@
 import React from "react";
 import { PawPrint } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Here you would normally validate the user's email/password.
+    // For now, we’ll just redirect to landing page after "login".
+    navigate("/home");
+  };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-400 via-purple-500 to-indigo-500 animate-gradient-xy overflow-hidden">
       {/* Floating Paw Prints */}
@@ -26,7 +36,7 @@ export default function LoginPage() {
           <h1 className="text-3xl font-extrabold tracking-wide text-purple-700">Adopt A Soul</h1>
         </div>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Email"
